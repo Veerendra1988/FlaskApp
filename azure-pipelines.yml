@@ -85,3 +85,12 @@ stages:
               azureSubscription: $(azureServiceConnectionId)
               appName: $(webAppName)
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Free Trial (eed7fdde-3724-481a-9025-d9b8c835bca2)'
+    appType: 'webAppLinux'
+    appName: 'instawebapp'
+    deployToSlotOrASE: true
+    resourceGroupName: 'virendra.a.patil_rg_Linux_centralus'
+    slotName: 'production'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
